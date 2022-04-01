@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Page Title</title>
+    <meta charset="UTF-8">
+    <title>matrix1</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+<body>
+<div class="text-center">
+ <h1>I recommend</h1>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>name</th>
+       <th>place</th>
+       <th>date</th>
+      <th>city</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for event in enterteiment.koncerty %}
+    <tr >
+      <td>{{event.name}}</td>
+        <td>{{event.place_address}}</td>
+      <td>{{event.date}}</td>
+      <td>{{event.city}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+</div>
+
+</div>
+</body>
+</html>

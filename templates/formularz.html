@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>matrix</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+</head>
+<body>
+<div class="text-center">
+          <header><H2>
+               Are you ready for journey
+              </H2>
+          </header>
+
+<div class="bg-gray">
+    <div class="card">
+        <div class="card-image">
+
+
+  </div>
+  <div class="card-header">
+    <div class="card-title h5">Time for holliday</div>
+    <div class="card-subtitle text-gray">What do you want to do and where</div>
+  </div>
+        <form method="POST" action="/result/">
+        <input type="hidden" name="" value=""/>
+
+  <div class="card-body">
+      <label>Miasto</label>
+      <select name="city">
+    <option>Choose a city</option>
+    <option value="Anywhere" {% if city =="Anywhere" %} selected{% endif %}>Anywhere</option>
+    <option value ="Wrocław" {% if city =="Wrocław" %} selected{% endif %}>Wrocław</option>
+    <option value ="Kraków" {% if city =="Kraków" %} selected{% endif %}>Kraków</option>
+    <option value ="Warszawa" {% if city =="Warszawa" %} selected{% endif %}> Warszawa</option>
+  </select>
+
+       <label class="form-label" for="input-date" >Date</label>
+      <input class="form-input" type="text" id="input-date" name="date" placeholder="YYYY-MM-DD" value="{{name}}" required>
+
+<label class="form-label" for="input-example-3">What do you want to do???</label>
+  <textarea class="form-input" id="input-example-3" name="info" placeholder="Concert,
+Sightseeing, Restaurant" rows="3" value="{{name}}" required></textarea>
+  </div>
+     <div class="card-footer">
+
+     <button class="btn btn-success" type="submit" value="send" >send>
+
+         </button>
+  </div>
+        </form>
+</div>
+
+<div class="form-group">
+
+</div>
+          <footer>
+               Have a fun
+          </footer>
+
+
+</div>
+</div>
+</body>
+</html>
