@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_alembic import Alembic
 from table import Hotele, Tourist_attractionWRO, Restaurant, Koncerty, Spektakle, Kabarety
+import random
 
 
 main = Flask(__name__)
@@ -30,6 +31,7 @@ class Enterteiment:
         self.koncerty = []
         self.spektakle = []
         self.kabarety = []
+        self.hotele = []
         self.events = []
         self.request = request
 
@@ -50,43 +52,45 @@ class Enterteiment:
         self.kabaret()
         self.anywhere()
         self.wheresleep()
-        return self.koncerty, self.spektakle, self.kabarety, self.events
+        return self.koncerty, self.spektakle, self.kabarety, self.events, self.hotele
 
     def koncert(self):
         self.koncerty = []
         for event in db.session.query(Koncerty).all():
             #c = [i for i in enterteiment_type if i in self.todo[0]]
             if "koncert" in self.todo[0]:
-                if self.date in event.date:
-                    if self.city in event.city:
+                if self.date in event.date and self.city in event.city:
+                    self.koncerty.append(event)
+                    """ if self.city in event.city:
                         self.koncerty.append(event)
                     elif not self.city:
-                        self.koncerty.append(event)
-
+                        self.koncerty.append(event)"""
+        return self.koncerty
 
     def spektakl(self):
+        self.spektakle = []
         for event in db.session.query(Spektakle).all():
-            self.spektakle.append(event)
             #c = [i for i in enterteiment_type if i in self.todo[0]]
             if "spektakl" in self.todo[0]:
-                if self.date in event.date:
-                    if self.city in event.city:
+                if self.date in event.date and self.city in event.city:
+                    self.spektakle.append(event)
+                    """if self.city in event.city:
                         print(event.name, event.date)
                     elif not self.city:
-                        print(event.name, event.date)
-            return self.spektakle
+                        print(event.name, event.date)"""
+        return self.spektakle
 
     def kabaret(self):
         for event in db.session.query(Kabarety).all():
-            self.kabarety.append(event)
             #c = [i for i in enterteiment_type if i in self.todo[0]]
             if "kabaret" in self.todo[0]:
-                if self.date in event.date:
-                    if self.city in event.city:
+                if self.date in event.date and self.city in event.city:
+                    self.kabarety.append(event)
+                    """self.kabarety.append(event)
                         print(event.name, event.date)
                     elif not self.city:
-                        print(event.name, event.date)
-            return self.kabarety
+                        print(event.name, event.date)"""
+        return self.kabarety
 
     def anywhere(self):
         if "Anywhere" == self.city:
@@ -108,17 +112,16 @@ class Enterteiment:
             return self.events
 
     def wheresleep(self):
+        self.hotele = []
         for place in db.session.query(Hotele).all():
-            if self.city in place.miasto:
-                if place.rating =="4.8":
-                    print(f"Warto się zatrzymać {place.name}przy ulicy: {place.adress}")
+            if self.city in place.miasto and place.rating =="4.8":
+                self.hotele.append(place)
+        #print(random.choice(self.hotele))
+        return self.hotele
+                    #print(f"Warto się zatrzymać {place.name}przy ulicy: {place.adress}")
 
-
-
-
-
-
-
+"""obj = Enterteiment(request)
+obj.execute()"""
 
 #enterteiment_type = ["koncert", "spektakl", "kabaret"]
 

@@ -18,6 +18,7 @@ alembic.init_app(app)
 
 @app.route("/", methods=["GET", "POST"])
 def formularz():
+    #obj = Enterteiment(request)
     city = request.form.get("city")
     date = request.form.get("date")
     info = request.form.get("info")
@@ -43,7 +44,7 @@ def formularzPOST():
 
 @app.route("/result/", methods=["GET", "POST"])
 def result():
-    obj=Enterteiment(request)
+    obj = Enterteiment(request)
     city = request.form.get("city")
     date = request.form.get("date")
     info = request.form.get("info")

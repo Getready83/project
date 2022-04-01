@@ -22,17 +22,53 @@
     </tr>
   </thead>
   <tbody>
-   {% for event in enterteiment.koncerty %}
-    <tr >
+    {% for event in enterteiment.koncerty %}
+    <tr class="active">
       <td>{{event.name}}</td>
         <td>{{event.place_address}}</td>
-      <td>{{event.date}}</td>
+        <td>{{event.date}}</td>
       <td>{{event.city}}</td>
     </tr>
-  {% endfor %}
+    {% endfor %}
+
+    {% for event in enterteiment.spektakle %}
+    <tr class="active">
+      <td>{{event.name}}</td>
+        <td>{{event.place_address}}</td>
+        <td>{{event.date}}</td>
+      <td>{{event.city}}</td>
+    </tr>
+    {% endfor %}
+
+     {% for event in enterteiment.kabarety %}
+    <tr class="active">
+      <td>{{event.name}}</td>
+        <td>{{event.place_address}}</td>
+        <td>{{event.date}}</td>
+      <td>{{event.city}}</td>
+    </tr>
+    {% endfor %}
+
   </tbody>
 </table>
-
+    <table class="table">
+  <thead>
+    <tr>
+      <th>name</th>
+       <th>adress</th>
+       <th>miasto</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for place in enterteiment.hotele %}
+    <tr class="active">
+      <td>{{place.name}}</td>
+        <td>{{place.adress}}</td>
+        <td>{{place.miasto}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 </div>
 
