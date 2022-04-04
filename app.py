@@ -18,20 +18,17 @@ alembic.init_app(app)
 
 @app.route("/", methods=["GET", "POST"])
 def formularz():
-    #obj = Enterteiment(request)
     city = request.form.get("city")
     date = request.form.get("date")
     info = request.form.get("info")
     if request.method == "POST":
         obj.execute()
-        print(city)
-        print(date)
-        print(info)
         return redirect("/result/")
     return render_template("formularz.html",
                     city=city,
                     date=date,
-                    info=info
+                    info=info,
+
     )
 
 """@app.route("/", methods=["POST"])

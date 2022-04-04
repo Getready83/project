@@ -14,11 +14,45 @@ alembic.init_app(main)
 
 
 class Tourist:
-    def __init__(self):
+    def __init__(self, request):
         self.choice = []
         self.place = []
         self.time = []
         self.todo = []
+        self.request = request
+        self.sigthsees = []
+        self.restaurants =[]
+
+    def takeChoice(self):
+        self.city = self.request.form.get("city", "")
+        self.place.append(self.city)
+        self.date = self.request.form.get("date", "")
+        self.time.append(self.date)
+        self.to_do = self.request.form.get("info", "")
+        self.todo.append(self.to_do)
+        return self.city, self.date, self.todo
+
+    def sigthsee(self):
+        self.sigthsees = []
+        self.restaurants = []
+        for travel in db.session.query(Tourist_attractionWRO).all():
+            if "zwiedzanie" in self.todo[0]:
+                if self.city in travel.miasto and travel.tourist_attraction == "1" and travel.rating == "4.9":
+                    print(travel.name, travel.adress,travel.miasto)
+                    self.sigthsees.append(travel)
+                return self.sigthsees
+
+        for travel in db.session.query(Restaurant).all():
+            if "restauraja" in self.todo[0]:
+                if self.city in travel.miasto and travel.restaurant == "1" and travel.rating == "4.9":
+                    self.restaurants.append(travel)
+                    print(travel.name, travel.adress, travel.miasto)
+
+
+    def execute(self):
+        self.takeChoice()
+        self.sigthsee()
+        return self.sigthsees, self.restaurants
 
 
 
@@ -93,22 +127,20 @@ class Enterteiment:
         return self.kabarety
 
     def anywhere(self):
+        self.events = []
         if "Anywhere" == self.city:
             if "koncert" in self.todo[0]:
                 for event in db.session.query(Koncerty).all():
-                    self.events.append(event)
                     if self.date in event.date:
-                        print(event.name, event.city, event.place_address)
+                        self.events.append(event)
             if "spektakl" in self.todo[0]:
                 for event in db.session.query(Spektakle).all():
-                    self.events.append(event)
                     if self.date in event.date:
-                        print(event.name, event.city, event.place_address)
+                        self.events.append(event)
             if "kabaret" in self.todo[0]:
                 for event in db.session.query(Kabarety).all():
-                    self.events.append(event)
                     if self.date in event.date:
-                        print(event.name, event.city, event.place_address)
+                        self.events.append(event)
             return self.events
 
     def wheresleep(self):
@@ -123,41 +155,5 @@ class Enterteiment:
 """obj = Enterteiment(request)
 obj.execute()"""
 
-#enterteiment_type = ["koncert", "spektakl", "kabaret"]
-
-
-"""
-x = ["pojechac na kabaret"]
-print(x,"x")
-a = x[0]
-print(a,"a")
-c=a.split(",")
-print(c,"c")
-b=a.replace(" ", ",")
-
-print(b)
-
-
-
-lista = ["koncert", "wrocław", "123"]
-if "koncert" in lista:
-    print("jest")
-
-for event in db.session.query(Koncerty).filter(
-        Koncerty.city == "Wrocław").all():
-    print(event.name, event.date, event.city)"""
-
-
-"""wroclaw = []
-
-for place in db.session.query(Tourist_attractionWRO).filter(Tourist_attractionWRO.miasto=="Wrocław").all():
-    if place.museum == "1":
-        if place.rating == "4.5":
-            wroclaw.append(place.name)
-print(wroclaw[1:3])
-for place in wroclaw:
-    print(place[1:4])"""
-
-"""for event in db.session.query(Spektakle).filter(Spektakle.city=="Wrocław").all():
-    print(event.date)
-"""
+"""obj = Tourist(request)
+obj.execute()"""

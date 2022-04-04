@@ -2,12 +2,12 @@ import requests
 import re
 import json
 
-URL = "https://www.kupbilecik.pl/standup/?q=&qt=standup&qw=K&qs=&qo=ASC&qn=1"
+URL = "https://www.kupbilecik.pl/kabarety/?q=&qt=kabaret&qw=W&qs=&qo=ASC&qn=1"
 
 
 response = requests.get(URL)
 lines = response.text
-with open("stand-up.txt", "w", encoding="utf-8") as f:
+with open("koncerty.txt", "w", encoding="utf-8") as f:
     f.write(lines)
 """
 with open("kabarety.txt", "r", encoding="utf-8") as f:
