@@ -90,11 +90,12 @@ class Enterteiment:
 
     def koncert(self):
         self.koncerty = []
-        for event in db.session.query(Koncerty).all():
-            #c = [i for i in enterteiment_type if i in self.todo[0]]
-            if "koncert" in self.todo[0]:
-                if self.date in event.date and self.city in event.city:
-                    self.koncerty.append(event)
+        tourists = ["koncert", "Koncert", "koncerty", "Koncerty"]
+        for tourist in tourists:
+            if tourist in self.todo[0]:
+                for event in db.session.query(Koncerty).all():
+                    if self.date in event.date and self.city in event.city:
+                        self.koncerty.append(event)
                     """ if self.city in event.city:
                         self.koncerty.append(event)
                     elif not self.city:

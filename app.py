@@ -31,13 +31,6 @@ def formularz():
 
     )
 
-"""@app.route("/", methods=["POST"])
-def formularzPOST():
-    city = request.form.get("city", "")
-    date = request.form.get("date", "")
-    info = request.form.get("info", "")
-    return redirect("/result/")"""
-
 
 @app.route("/result/", methods=["GET", "POST"])
 def result():
