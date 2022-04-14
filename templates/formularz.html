@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
 </head>
 <body>
+<div class="bg-gray">
 <div class="text-center">
           <header><H2>
                Are you ready for journey
@@ -24,11 +25,11 @@
       </div>
     <div class="column col-4">
           <div class="card-image">
-              <img class="js-img-protect container-absolute to-all opacity-zero" src="https://t3.ftcdn.net/jpg/03/20/56/92/240_F_320569263_SsNTXDWR7NxyrZj6gwzAn8WZPsXVLryd.jpg" class="img-responsive">
+              <img srcset="https://cdn.pixabay.com/photo/2022/03/14/20/54/city-7069010_960_720.jpg 1x, https://cdn.pixabay.com/photo/2022/03/14/20/54/city-7069010_1280.jpg 2x" src="https://cdn.pixabay.com/photo/2022/03/14/20/54/city-7069010_960_720.jpg" alt="Miasto, Podróż, Turystyka, Meksyk, Cdmx, Miejski" width="375" height="241" loading="lazy">
           </div>
-        col-3</div>
+        </div>
   <div class="card-image">
-              <img class="js-img-protect container-absolute to-all opacity-zero" src="https://t3.ftcdn.net/jpg/03/20/56/92/240_F_320569263_SsNTXDWR7NxyrZj6gwzAn8WZPsXVLryd.jpg" class="img-responsive">
+              <img class="MosaicAsset-module__thumb___klD9E" src="https://media.istockphoto.com/photos/hot-coffee-cup-with-fresh-organic-red-coffee-beans-and-coffee-roasts-picture-id1135319558?k=20&amp;m=1135319558&amp;s=612x612&amp;w=0&amp;h=bg6xOnWAz6gSl-My0xlcscxbnxZo2zYDlyB91ChtZyQ=" alt="Hot coffee cup with fresh organic red coffee beans and coffee roasts on the wooden table and the black background with copyspace for your text.  coffee café stock pictures, royalty-free photos &amp; images" width="375" height="241" loading="lazy">
           </div>
 
   </div>
@@ -37,10 +38,10 @@
   </div>
 </div>
 
-<div class="bg-gray">
+
     <div class="card">
         <div class="card-image">
-
+<div class="bg-gray">
 <div class="text-center">
   <div class="card-header">
     <div class="card-title h5">Time for holliday</div>
@@ -58,8 +59,12 @@
     <option value ="Kraków" {% if city =="Kraków" %} selected{% endif %}>Kraków</option>
     <option value ="Warszawa" {% if city =="Warszawa" %} selected{% endif %}> Warszawa</option>
   </select>
+<div class="container">
+  <div class="columns">
+    <div class="column col-4"></div>
+    <div class="column col-4">
 
-       <label class="form-label" for="input-date" >Date</label>
+<label class="form-label" for="input-date" >Date</label>
       <input class="form-input" type="text" id="input-date" name="date" placeholder="YYYY-MM-DD" value="{{name}}" required>
 
 <label class="form-label" for="input-example-3">What do you want to do???</label>
@@ -67,6 +72,12 @@
 spektakl, kabaret" rows="3" value="{{name}}" required></textarea>
   </div>
      <div class="card-footer">
+
+    </div>
+    <div class="column col-4"></div>
+  </div>
+</div>
+
 
      <button class="btn btn-success" type="submit" value="send" >send>
 
@@ -83,6 +94,7 @@ spektakl, kabaret" rows="3" value="{{name}}" required></textarea>
                Have a fun
           </footer>
 
+    </div>
     </div>
 </div>
 </div>
